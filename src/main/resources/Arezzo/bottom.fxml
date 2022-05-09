@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="1274.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Arezzo.BottomController">
+   <children>
+      <AnchorPane layoutX="1.0" prefHeight="371.0" prefWidth="1278.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a7abae" height="371.0" stroke="BLACK" strokeType="INSIDE" width="1278.0" />
+            <AnchorPane layoutX="455.0" layoutY="14.0">
+               <children>
+                  <AnchorPane prefHeight="338.0" prefWidth="223.0">
+                     <children>
+                        <RadioButton fx:id="aigu" mnemonicParsing="false" prefHeight="28.0" prefWidth="60.0" text="aigu">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="octave" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="medium" layoutY="49.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="86.0" selected="true" text="medium" toggleGroup="$octave" />
+                        <RadioButton fx:id="grave" layoutY="100.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="60.0" text="grave" toggleGroup="$octave" />
+                        <RadioButton fx:id="ronde" layoutY="147.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="60.0">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="forme" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="noire" layoutY="249.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="60.0" selected="true" toggleGroup="$forme" />
+                        <RadioButton fx:id="blanche" layoutY="202.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="60.0" toggleGroup="$forme" />
+                        <RadioButton fx:id="croche" layoutY="296.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="42.0" toggleGroup="$forme" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="21.0" prefHeight="338.0" prefWidth="86.0">
+                     <children>
+                        <ImageView fitHeight="16.0" fitWidth="32.0" layoutX="11.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" x="-10.0" y="150.0">
+                           <image>
+                              <Image url="@images/ronde.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="38.0" fitWidth="24.0" layoutX="17.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" x="-10.0" y="159.0">
+                           <image>
+                              <Image url="@images/blanche.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="38.0" fitWidth="17.0" layoutX="17.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" x="-10.0" y="205.0">
+                           <image>
+                              <Image url="@images/noire.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="38.0" fitWidth="30.0" layoutX="14.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" x="-10.0" y="259.0">
+                           <image>
+                              <Image url="@images/croche.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="270.0" prefWidth="427.0">
+               <children>
+                  <AnchorPane layoutX="2.0" layoutY="1.0" prefHeight="264.0" prefWidth="424.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#Do" prefHeight="264.0" prefWidth="60.0" />
+                        <Button layoutX="60.0" mnemonicParsing="false" onAction="#Re" prefHeight="264.0" prefWidth="60.0" />
+                        <Button layoutX="120.0" mnemonicParsing="false" onAction="#Mi" prefHeight="264.0" prefWidth="60.0" />
+                        <Button layoutX="180.0" mnemonicParsing="false" onAction="#Fa" prefHeight="264.0" prefWidth="60.0" />
+                        <Button layoutX="240.0" mnemonicParsing="false" onAction="#Sol" prefHeight="264.0" prefWidth="60.0" />
+                        <Button layoutX="300.0" mnemonicParsing="false" onAction="#La" prefHeight="264.0" prefWidth="60.0" />
+                        <Button layoutX="360.0" mnemonicParsing="false" onAction="#Si" prefHeight="264.0" prefWidth="60.0" />
+                        <Button layoutX="30.0" mnemonicParsing="false" onAction="#Do_d" prefHeight="148.0" prefWidth="42.0" style="-fx-background-color: #000000;" />
+                        <Button layoutX="279.0" mnemonicParsing="false" onAction="#Sol_d" prefHeight="148.0" prefWidth="42.0" style="-fx-background-color: #000000;" />
+                        <Button layoutX="212.0" mnemonicParsing="false" onAction="#Fa_d" prefHeight="148.0" prefWidth="42.0" style="-fx-background-color: #000000;" />
+                        <Button layoutX="348.0" mnemonicParsing="false" onAction="#La_d" prefHeight="148.0" prefWidth="42.0" style="-fx-background-color: #000000;" />
+                        <Button layoutX="108.0" mnemonicParsing="false" onAction="#Re_d" prefHeight="148.0" prefWidth="42.0" style="-fx-background-color: #000000;" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="14.0" layoutY="305.0" prefHeight="47.0" prefWidth="343.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#chut" prefHeight="44.0" prefWidth="424.0" text="Chuuuuuut" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="627.0" layoutY="136.0" prefHeight="47.0" prefWidth="463.0">
+               <children>
+                  <Slider layoutX="100.0" layoutY="1.0" prefHeight="16.0" prefWidth="330.0" showTickLabels="true" showTickMarks="true" />
+                  <Text layoutX="8.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="627.0" layoutY="186.0" prefHeight="47.0" prefWidth="463.0">
+               <children>
+                  <Slider layoutX="100.0" layoutY="1.0" max="220.0" min="40.0" prefHeight="16.0" prefWidth="330.0" showTickLabels="true" showTickMarks="true" />
+                  <Text layoutX="8.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="639.0" layoutY="237.0" prefHeight="137.0" prefWidth="589.0">
+               <children>
+                  <RadioButton fx:id="aigu1" layoutY="41.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="60.0" selected="true" text="Piano">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="Instrument" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="medium1" layoutX="120.0" layoutY="41.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="86.0" text="Guitare" toggleGroup="$Instrument" />
+                  <RadioButton fx:id="grave1" layoutX="252.0" layoutY="41.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="101.0" text="Saxophone" toggleGroup="$Instrument" />
+                  <RadioButton fx:id="grave11" layoutX="395.0" layoutY="41.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="101.0" text="Trompette" toggleGroup="$Instrument" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="867.0" layoutY="51.0" prefHeight="47.0" prefWidth="47.0">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/play.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" onAction="#play" opacity="0.0" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 50px;" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
