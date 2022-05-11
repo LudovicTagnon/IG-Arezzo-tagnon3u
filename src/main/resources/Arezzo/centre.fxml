@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="228.0" prefWidth="1274.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="CentrePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="228.0" prefWidth="1274.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Arezzo.CentreController">
    <children>
       <AnchorPane layoutX="1.0" prefHeight="227.0" prefWidth="1278.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5b7b9" height="228.0" stroke="BLACK" strokeType="INSIDE" width="1278.0" />
-            <AnchorPane layoutX="1095.0" layoutY="14.0">
+            <AnchorPane layoutX="1010.0" layoutY="14.0" prefHeight="200.0" prefWidth="170.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aea2a3" height="200.0" stroke="BLACK" strokeType="INSIDE" width="169.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="1063.0">
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="822.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a19999" height="200.0" stroke="BLACK" strokeType="INSIDE" width="1063.0" />
-                  <ScrollBar layoutX="1030.0" layoutY="12.0" orientation="VERTICAL" prefHeight="176.0" prefWidth="19.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a19999" height="200.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
+                  <ImageView fx:id="Image_Partition" fitHeight="200.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
+                  <ScrollBar layoutX="800.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="19.0" />
                </children>
             </AnchorPane>
          </children>

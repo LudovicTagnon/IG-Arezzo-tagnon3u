@@ -89,26 +89,26 @@
             </AnchorPane>
             <AnchorPane layoutX="627.0" layoutY="136.0" prefHeight="47.0" prefWidth="463.0">
                <children>
-                  <Slider layoutX="100.0" layoutY="1.0" prefHeight="16.0" prefWidth="330.0" showTickLabels="true" showTickMarks="true" />
+                  <Slider fx:id="Volume" layoutX="100.0" layoutY="1.0" onMouseReleased="#setVolume" prefHeight="16.0" prefWidth="330.0" showTickLabels="true" showTickMarks="true" />
                   <Text layoutX="8.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="627.0" layoutY="186.0" prefHeight="47.0" prefWidth="463.0">
                <children>
-                  <Slider layoutX="100.0" layoutY="1.0" max="220.0" min="40.0" prefHeight="16.0" prefWidth="330.0" showTickLabels="true" showTickMarks="true" />
+                  <Slider fx:id="Tempo" layoutX="100.0" layoutY="1.0" max="220.0" min="40.0" onMouseReleased="#setTempo" prefHeight="16.0" prefWidth="330.0" showTickLabels="true" showTickMarks="true" value="180.0" />
                   <Text layoutX="8.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="639.0" layoutY="237.0" prefHeight="137.0" prefWidth="589.0">
                <children>
-                  <RadioButton fx:id="aigu1" layoutY="41.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="60.0" selected="true" text="Piano">
+                  <RadioButton fx:id="piano" layoutY="41.0" mnemonicParsing="false" onAction="#setInstrument" prefHeight="28.0" prefWidth="60.0" selected="true" text="Piano">
                      <toggleGroup>
-                        <ToggleGroup fx:id="Instrument" />
+                        <ToggleGroup fx:id="instrument" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="medium1" layoutX="120.0" layoutY="41.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="86.0" text="Guitare" toggleGroup="$Instrument" />
-                  <RadioButton fx:id="grave1" layoutX="252.0" layoutY="41.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="101.0" text="Saxophone" toggleGroup="$Instrument" />
-                  <RadioButton fx:id="grave11" layoutX="395.0" layoutY="41.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="101.0" text="Trompette" toggleGroup="$Instrument" />
+                  <RadioButton fx:id="guitare" layoutX="120.0" layoutY="41.0" mnemonicParsing="false" onAction="#setInstrument" prefHeight="28.0" prefWidth="86.0" text="Guitare" toggleGroup="$instrument" />
+                  <RadioButton fx:id="saxophone" layoutX="252.0" layoutY="41.0" mnemonicParsing="false" onAction="#setInstrument" prefHeight="28.0" prefWidth="101.0" text="Saxophone" toggleGroup="$instrument" />
+                  <RadioButton fx:id="trompette" layoutX="395.0" layoutY="41.0" mnemonicParsing="false" onAction="#setInstrument" prefHeight="28.0" prefWidth="101.0" text="Trompette" toggleGroup="$instrument" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="867.0" layoutY="51.0" prefHeight="47.0" prefWidth="47.0">
