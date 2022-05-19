@@ -15,7 +15,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Melodie">
             <items>
-              <MenuItem mnemonicParsing="false" text="Nouveau" />
+              <MenuItem mnemonicParsing="false" onAction="#Nouveau" text="Nouveau" />
                   <MenuItem mnemonicParsing="false" text="Ouvrir" />
                   <MenuItem mnemonicParsing="false" text="Enregistrer sous ..." />
                   <MenuItem mnemonicParsing="false" onAction="#Quitter" text="Quitter" />
@@ -24,7 +24,7 @@
           <Menu mnemonicParsing="false" text="Outils">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#Renommer" text="Renommer" />
-                  <MenuItem mnemonicParsing="false" text="Transposer" />
+                  <MenuItem mnemonicParsing="false" onAction="#Transposer" text="Transposer" />
             </items>
           </Menu>
         </menus>

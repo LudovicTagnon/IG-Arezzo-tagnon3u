@@ -8,9 +8,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import static Arezzo.CentreController.Image_Partition;
-
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main extends Application {
     @Override
@@ -26,9 +25,6 @@ public class Main extends Application {
         fxmlLoader = new FXMLLoader(Main.class.getResource("bottom.fxml"));
         root.setBottom(fxmlLoader.load());
 
-        Image_Partition.setX(20);
-        Image_Partition.setY(115);
-        root.getChildren().addAll(Image_Partition);
 
 
         Scene scene = new Scene(root, 1280, 720);
