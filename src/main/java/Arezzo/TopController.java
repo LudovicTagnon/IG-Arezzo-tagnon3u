@@ -46,8 +46,13 @@ public class TopController implements Observateur{
             if(Data.getPartition_tmp().charAt(i)== 'A' || Data.getPartition_tmp().charAt(i)== 'a'){
                 Data.getPartition_tmp().insert(i,"^");
                 i++;
-            }else if(Data.getPartition_tmp().charAt(i)== 'B'){
+            }else if(Data.getPartition_tmp().charAt(i)== 'B' && Data.getPartition_tmp().charAt(i+1)== ','){
+                System.out.println("TEST");
+                Data.getPartition_tmp().replace(i+1,i+2, "");
                 Data.getPartition_tmp().replace(i,i+1,"C");
+                //i++;
+            } else if(Data.getPartition_tmp().charAt(i)== 'B'){
+                Data.getPartition_tmp().replace(i,i+1,"c");
                 //i++;
             }else if(Data.getPartition_tmp().charAt(i)== 'b'){
                 Data.getPartition_tmp().replace(i,i+1,"c");
@@ -75,20 +80,21 @@ public class TopController implements Observateur{
             }
             else if(Data.getPartition_tmp().charAt(i)== '^'){
                 Data.getPartition_tmp().delete(i,i+1);
+
                 if(Data.getPartition_tmp().charAt(i)== 'A'){
                     Data.getPartition_tmp().replace(i,i+1,"B");
                 }else if(Data.getPartition_tmp().charAt(i)== 'a'){
                     Data.getPartition_tmp().replace(i,i+1,"b");
                 }
                 else if(Data.getPartition_tmp().charAt(i)== 'B'){
-                    Data.getPartition_tmp().replace(i,i+1,"C");
+                    Data.getPartition_tmp().replace(i,i+1,"c");
                 }else if(Data.getPartition_tmp().charAt(i)== 'b'){
                     Data.getPartition_tmp().replace(i,i+1,"c");
                 }
                 else if(Data.getPartition_tmp().charAt(i)== 'C'){
                     Data.getPartition_tmp().replace(i,i+1,"D");
                 }else if(Data.getPartition_tmp().charAt(i)== 'c'){
-                    Data.getPartition_tmp().replace(i,i+1,"D");
+                    Data.getPartition_tmp().replace(i,i+1,"d");
                 }
                 else if(Data.getPartition_tmp().charAt(i)== 'D'){
                     Data.getPartition_tmp().replace(i,i+1,"E");
@@ -111,9 +117,11 @@ public class TopController implements Observateur{
                     Data.getPartition_tmp().replace(i,i+1,"a");
                 }
             }
+
         }
         Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
         Data.getInstance().notifierObservateur();
+        System.out.println(Data.getPartition_tmp().toString());
     }
 
     @Override
