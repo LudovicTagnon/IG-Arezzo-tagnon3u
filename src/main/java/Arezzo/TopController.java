@@ -29,6 +29,17 @@ public class TopController implements Observateur{
         texte.setContentText("Nouveau nom:");
         texte.showAndWait();
         this.Titre.setText(texte.getResult());
+        Data.getPartition().setTitre(texte.getResult());
+    }
+
+    @FXML
+    protected void Sauvegarder(){
+        Data.getInstance().Sauvegarder();
+    }
+
+    @FXML
+    protected void Ouvrir(){
+        Data.getInstance().Ouvrir();
     }
 
     @FXML

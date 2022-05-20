@@ -84,7 +84,7 @@
             </AnchorPane>
             <AnchorPane layoutX="14.0" layoutY="305.0" prefHeight="47.0" prefWidth="343.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#chut" prefHeight="44.0" prefWidth="424.0" text="Chuuuuuut" />
+                  <Button mnemonicParsing="false" onAction="#Silence" prefHeight="44.0" prefWidth="424.0" text="Chuuuuuut" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="627.0" layoutY="136.0" prefHeight="47.0" prefWidth="463.0">
