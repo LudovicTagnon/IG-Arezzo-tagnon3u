@@ -16,8 +16,8 @@
           <Menu mnemonicParsing="false" text="Melodie">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#Nouveau" text="Nouveau" />
-                  <MenuItem mnemonicParsing="false" text="Ouvrir" />
-                  <MenuItem mnemonicParsing="false" text="Enregistrer sous ..." />
+                  <MenuItem mnemonicParsing="false" onAction="#Ouvrir" text="Ouvrir" />
+                  <MenuItem mnemonicParsing="false" onAction="#Sauvegarder" text="Enregistrer sous ..." />
                   <MenuItem mnemonicParsing="false" onAction="#Quitter" text="Quitter" />
             </items>
           </Menu>
