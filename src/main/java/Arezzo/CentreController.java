@@ -183,6 +183,7 @@ public class CentreController implements Observateur {
     @FXML
     protected void afficherNotes() {
         ListeNotes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        listviewPane = new AnchorPane(ListeNotes);
         stage.setScene(new Scene(listviewPane, 300,800));
         stage.show();
     }
@@ -205,6 +206,7 @@ public class CentreController implements Observateur {
             ImageView imageBlanche = new ImageView(new Image(String.valueOf(CentreController.class.getResource("/Arezzo/images/blanche.png"))));
             ImageView imageRonde = new ImageView(new Image(String.valueOf(CentreController.class.getResource("/Arezzo/images/ronde.png"))));
 
+
             imageCroche.setFitHeight(50);
             imageNoire.setFitHeight(50);
             imageBlanche.setFitHeight(50);
@@ -219,7 +221,6 @@ public class CentreController implements Observateur {
                 Label label_tmp = new Label(String.valueOf(Data.getPartition_tmp().charAt(i)));
                 label_tmp.setPrefSize(70,50);
                 label_tmp.setStyle(" -fx-font-size: 15pt ");
-                label_tmp.setPadding(new Insets(100));
 
                 if ( i+1 < Data.getPartition_tmp().length()){
                     if ( Data.getPartition_tmp().charAt(i+1) == ',' ){
