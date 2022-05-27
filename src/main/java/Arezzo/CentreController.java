@@ -101,7 +101,28 @@ public class CentreController implements Observateur {
     }
 
     protected void monterNote(int indexToMove){
+        boolean flagDerNote = false;
+        ArrayList<Integer> testFlag = intervalNote(indexToMove);
+        if(testFlag.get(1)+2>Data.getPartition_tmp().length()){
+            flagDerNote=true;
+            System.out.println("Impossible de monter la derniere note");
+        }
 
+        if(!flagDerNote)
+        {
+            ArrayList<Integer> notePrincipaleInterval = intervalNote(indexToMove);
+            ArrayList<Integer> noteSecondaireInterval = intervalNote(indexToMove + 1);
+            String notePrincipale = Data.getPartition_tmp().substring(notePrincipaleInterval.get(0), notePrincipaleInterval.get(1));
+            String noteSecondaire = Data.getPartition_tmp().substring(noteSecondaireInterval.get(0), noteSecondaireInterval.get(1));
+
+            Data.getPartition_tmp().replace(notePrincipaleInterval.get(0), notePrincipaleInterval.get(1), noteSecondaire);
+            Data.getPartition_tmp().replace(noteSecondaireInterval.get(0), noteSecondaireInterval.get(1), notePrincipale);
+
+
+            System.out.println(Data.getPartition_tmp());
+            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
+            Data.getInstance().notifierObservateur();
+        }
     }
 
 
