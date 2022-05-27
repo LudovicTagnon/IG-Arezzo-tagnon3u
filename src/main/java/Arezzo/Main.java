@@ -12,6 +12,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main extends Application {
+
+    /**
+     * @author Ludovic Tagnon
+     * Classe principale qui:
+     * Crée la stage et le borderpane
+     * Ajoute les fichiers fxml de Scenebuilder au borderpane
+     * Lance et ferme la stage
+     */
+
     @Override
     public void start(Stage stage) throws IOException {
         BorderPane root = new BorderPane();

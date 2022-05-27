@@ -16,6 +16,13 @@ import java.util.Collections;
 
 public class CentreController implements Observateur {
 
+    /**
+     * @author Ludovic Tagnon
+     * Classe correspondant aux fonctionnalités:
+     * De l'affichage de la partition
+     * De la ListView (avec Effacer, Monter, Descendre)
+     */
+
     private ListView<Label> ListeNotes = new ListView<>();
 
     private AnchorPane listviewPane = new AnchorPane(ListeNotes);
@@ -25,6 +32,9 @@ public class CentreController implements Observateur {
     @FXML
     private ImageView Image_Partition = new ImageView();
 
+    /**
+     * Constructeur qui initialise les Boutons de la ListView
+     */
     public CentreController() {
         Data.getInstance().ajouterObservateur(this);
         ContextMenu CM = new ContextMenu();
@@ -55,6 +65,9 @@ public class CentreController implements Observateur {
         ListeNotes.setContextMenu(CM);
     }
 
+    /**
+     * Renvoie une arraylist contenant les 2 index de début et fin d'une note, à partir du nombre d'espaces avant celle-ci
+     */
     protected ArrayList<Integer> intervalNote(int indexToMove) {
         int spaceBefore = 0;
         int spaceAfter = 0;
@@ -100,6 +113,9 @@ public class CentreController implements Observateur {
 
     }
 
+    /**
+     * Modifie la position de la note dans la ListView et dans la partition
+     */
     protected void monterNote(int indexToMove){
         boolean flagDerNote = false;
         ArrayList<Integer> testFlag = intervalNote(indexToMove);
@@ -125,7 +141,9 @@ public class CentreController implements Observateur {
         }
     }
 
-
+    /**
+     * Modifie la position de la note dans la ListView et dans la partition
+     */
     protected void descendreNote(int indexToMove){
 
         boolean flag1ereNote = false;
@@ -152,6 +170,9 @@ public class CentreController implements Observateur {
         }
     }
 
+    /**
+     * Supprime la note sélectionnée dans la ListView et dans la partition
+     */
     protected void deleteAtIndex(int indexToDelete){
 
         ArrayList<Integer> noteToDelArray = intervalNote(indexToDelete);
@@ -196,6 +217,9 @@ public class CentreController implements Observateur {
         System.out.println(Data.getPartition_tmp());
     }
 
+    /**
+     * Ajoute chaque note de la partition dans la ListView
+     */
     public void rafraichirNotesListView(){
 
 

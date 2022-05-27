@@ -14,12 +14,32 @@ import java.util.ArrayList;
 
 public class Data extends SujetObserve{
 
+    /**
+     * @author Ludovic Tagnon
+     * Classe correspondant aux variables et objets communs aux autres classes:
+     * La partition
+     * Le stringbuilder Partition_tmp
+     * Le tempo
+     * Le compteur de temps dans la mesure
+     * Ainsi que les fonctions Ouvrir et Sauvegarder
+     */
+
     private Partition partition;
 
     private StringBuilder Partition_tmp;
 
     private double Tempo;
 
+    public double getCpt_mesure() {
+        return cpt_mesure;
+    }
+
+    private double cpt_mesure;
+
+
+    public void setCpt_mesure(double cpt_mesure) {
+        this.cpt_mesure = cpt_mesure;
+    }
 
     private static final Data instance = new Data();
 

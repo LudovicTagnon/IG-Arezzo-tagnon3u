@@ -24,7 +24,18 @@ import java.util.ResourceBundle;
 
 public class BottomController implements Observateur {
 
-    private double cpt_mesure;
+    /**
+     * @author Ludovic Tagnon
+     * Classe correspondant aux fonctionnalités:
+     * Du Piano,
+     * Des rythmes/hauteur de la note
+     * Des 2 sliders (Volume et Tempo)
+     * Des instruments
+     * Du bouton Play
+     */
+
+
+    TranslateTransition animation = new TranslateTransition();
 
     @FXML
     private RadioButton aigu;
@@ -70,11 +81,15 @@ public class BottomController implements Observateur {
     @FXML
     protected Slider Tempo;
 
+
     public BottomController() {
         Data.getInstance().ajouterObservateur(this);
-        cpt_mesure=0;
+        Data.getInstance().setCpt_mesure(0);
     }
 
+    /**
+     * Ajoute le rythme séléctionné à la string
+     */
     protected void appliqueRythme(){
         if(croche.isSelected()){
             Data.getPartition_tmp().append("/ ");
@@ -87,6 +102,9 @@ public class BottomController implements Observateur {
         }
     }
 
+    /**
+     * Ajoute la valeur du rythme au compteur
+     */
     protected int checkMesure(){
         double tmp_rythme=0;
         if(croche.isSelected()){
@@ -99,17 +117,21 @@ public class BottomController implements Observateur {
             tmp_rythme=4;
         }
 
-        if(cpt_mesure+tmp_rythme>4){ //+de 4 non authorise
+        if(Data.getInstance().getCpt_mesure()+tmp_rythme>4){ //+de 4 non authorise
             return 0;
-        }else if(cpt_mesure+tmp_rythme==4){ // fin de mesure
-            cpt_mesure=0;
+        }else if(Data.getInstance().getCpt_mesure()+tmp_rythme==4){ // fin de mesure
+            Data.getInstance().setCpt_mesure(0);
+
             return 2;
         } else {    // authorise rajouter rythme
-            cpt_mesure+=tmp_rythme;
+            Data.getInstance().setCpt_mesure(Data.getInstance().getCpt_mesure()+tmp_rythme);
             return 1;
         }
     }
 
+    /**
+     * Lance la lecture de la partition
+     */
     @FXML
     protected void play(){
         System.out.println("Play");
@@ -117,6 +139,9 @@ public class BottomController implements Observateur {
     }
 
 
+    /**
+     * Ajoute le silence choisi à la partition
+     */
     @FXML
     protected void Silence() {
         int flag=checkMesure();
@@ -141,315 +166,234 @@ public class BottomController implements Observateur {
         }
     }
 
-    @FXML
-    protected void Do() {
+    /**
+     * Ajoute la note avec son rythme et octave correspondant à la partition
+     */
+    protected void Note(String note){
         int flag=checkMesure();
         if(flag==1 || flag==2) {
-            if (aigu.isSelected()) {
-                Data.getPartition().play("c");
-                Data.getPartition_tmp().append("c");
-            } else if (medium.isSelected()) {
-                Data.getPartition().play("C");
-                Data.getPartition_tmp().append("C");
-            } else {
-                Data.getPartition().play("C,");
-                Data.getPartition_tmp().append("C,");
+            if(note.equals("Do")){
+                if (aigu.isSelected()) {
+                    Data.getPartition().play("c");
+                    Data.getPartition_tmp().append("c");
+                } else if (medium.isSelected()) {
+                    Data.getPartition().play("C");
+                    Data.getPartition_tmp().append("C");
+                } else {
+                    Data.getPartition().play("C,");
+                    Data.getPartition_tmp().append("C,");
+                }
+            } else if (note.equals("Do_d")) {
+                if (aigu.isSelected()) {
+                    Data.getPartition().play("_d");
+                    Data.getPartition_tmp().append("_d");
+                } else if (medium.isSelected()) {
+                    Data.getPartition().play("_D");
+                    Data.getPartition_tmp().append("_D");
+                } else {
+                    Data.getPartition().play("_D,");
+                    Data.getPartition_tmp().append("_D,");
+                }
+            } else if (note.equals("Re")) {
+                if (aigu.isSelected()) {
+                    Data.getPartition().play("d");
+                    Data.getPartition_tmp().append("d");
+                } else if (medium.isSelected()) {
+                    Data.getPartition().play("D");
+                    Data.getPartition_tmp().append("D");
+                } else {
+                    Data.getPartition().play("D,");
+                    Data.getPartition_tmp().append("D,");
+                }
+            } else if (note.equals("Re_d")) {
+                if (aigu.isSelected()) {
+                    Data.getPartition().play("_e");
+                    Data.getPartition_tmp().append("_e");
+                } else if (medium.isSelected()) {
+                    Data.getPartition().play("_E");
+                    Data.getPartition_tmp().append("_E");
+                } else {
+                    Data.getPartition().play("_E");
+                    Data.getPartition_tmp().append("_E,");
+                }
+            } else if (note.equals("Mi")) {
+                if (aigu.isSelected()) {
+                    Data.getPartition().play("e");
+                    Data.getPartition_tmp().append("e");
+
+                } else if (medium.isSelected()) {
+                    Data.getPartition().play("E");
+                    Data.getPartition_tmp().append("E");
+
+                } else {
+                    Data.getPartition().play("E,");
+                    Data.getPartition_tmp().append("E,");
+
+                }
+            } else if (note.equals("Fa")) {
+                if (aigu.isSelected()) {
+                    Data.getPartition().play("f");
+                    Data.getPartition_tmp().append("f");
+
+                } else if (medium.isSelected()) {
+                    Data.getPartition().play("F");
+                    Data.getPartition_tmp().append("F");
+
+                } else {
+                    Data.getPartition().play("F,");
+                    Data.getPartition_tmp().append("F,");
+                }
+            } else if (note.equals("Fa_d")) {
+                if (aigu.isSelected()) {
+                    Data.getPartition().play("_g");
+                    Data.getPartition_tmp().append("_g");
+
+                } else if (medium.isSelected()) {
+                    Data.getPartition().play("_G");
+                    Data.getPartition_tmp().append("_G");
+
+                } else {
+                    Data.getPartition().play("_G,");
+                    Data.getPartition_tmp().append("_G,");
+                }
+            }else if (note.equals("Sol")) {
+                if (aigu.isSelected()) {
+                    Data.getPartition().play("g");
+                    Data.getPartition_tmp().append("g");
+
+                } else if (medium.isSelected()) {
+                    Data.getPartition().play("G");
+                    Data.getPartition_tmp().append("G");
+
+                } else {
+                    Data.getPartition().play("G,");
+                    Data.getPartition_tmp().append("G,");
+                }
+            }else if (note.equals("Sol_d")) {
+                if (aigu.isSelected()) {
+                    Data.getPartition().play("_a");
+                    Data.getPartition_tmp().append("_a");
+
+                } else if (medium.isSelected()) {
+                    Data.getPartition().play("_A");
+                    Data.getPartition_tmp().append("_A");
+
+                } else {
+                    Data.getPartition().play("_A,");
+                    Data.getPartition_tmp().append("_A,");
+                }
+            }else if (note.equals("La")) {
+                if (aigu.isSelected()) {
+                    Data.getPartition().play("a");
+                    Data.getPartition_tmp().append("a");
+
+                } else if (medium.isSelected()) {
+                    Data.getPartition().play("A");
+                    Data.getPartition_tmp().append("A");
+
+                } else {
+                    Data.getPartition().play("A,");
+                    Data.getPartition_tmp().append("A,");
+                }
+            }else if (note.equals("La_d")) {
+                if (aigu.isSelected()) {
+                    Data.getPartition().play("_b");
+                    Data.getPartition_tmp().append("_b");
+
+                } else if (medium.isSelected()) {
+                    Data.getPartition().play("_B");
+                    Data.getPartition_tmp().append("_B");
+
+                } else {
+                    Data.getPartition().play("_B,");
+                    Data.getPartition_tmp().append("_B,");
+                }
+            }else if (note.equals("Si")) {
+                if (aigu.isSelected()) {
+                    Data.getPartition().play("b");
+                    Data.getPartition_tmp().append("b");
+
+                } else if (medium.isSelected()) {
+                    Data.getPartition().play("B");
+                    Data.getPartition_tmp().append("B");
+
+                } else {
+                    Data.getPartition().play("B,");
+                    Data.getPartition_tmp().append("B,");
+                }
             }
-            System.out.println("Do ");
-            this.appliqueRythme();
-            if(flag==2){
-                Data.getPartition_tmp().append("| ");
-            }
-            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-            Data.getInstance().notifierObservateur();
         }
+        this.appliqueRythme();
+        if(flag==2){
+            Data.getPartition_tmp().append("| ");
+        }
+        Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
+        Data.getInstance().notifierObservateur();
+
+
+    }
+
+
+    @FXML
+    protected void Do() {
+        Note("Do");
     }
 
     @FXML
     protected void Do_d() {
-        int flag=checkMesure();
-        if(flag==1 || flag==2) {
-            if (aigu.isSelected()) {
-                Data.getPartition().play("_d");
-                Data.getPartition_tmp().append("_d");
-            } else if (medium.isSelected()) {
-                Data.getPartition().play("_D");
-                Data.getPartition_tmp().append("_D");
-            } else {
-                Data.getPartition().play("_D,");
-                Data.getPartition_tmp().append("_D,");
-            }
-            System.out.println("Do# ");
-            this.appliqueRythme();
-            if(flag==2){
-                Data.getPartition_tmp().append("| ");
-            }
-            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-            Data.getInstance().notifierObservateur();
-        }
+        Note("Do_d");
     }
 
     @FXML
     protected void Re() {
-        int flag=checkMesure();
-        if(flag==1 || flag==2) {
-            if (aigu.isSelected()) {
-                Data.getPartition().play("d");
-                Data.getPartition_tmp().append("d");
-            } else if (medium.isSelected()) {
-                Data.getPartition().play("D");
-                Data.getPartition_tmp().append("D");
-            } else {
-                Data.getPartition().play("D,");
-                Data.getPartition_tmp().append("D,");
-
-            }
-            this.appliqueRythme();
-            if(flag==2){
-                Data.getPartition_tmp().append("| ");
-            }
-            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-            Data.getInstance().notifierObservateur();
-        }
+        Note("Re");
     }
 
     @FXML
     protected void Re_d() {
-        int flag=checkMesure();
-        if(flag==1 || flag==2) {
-            if (aigu.isSelected()) {
-                Data.getPartition().play("_e");
-                Data.getPartition_tmp().append("_e");
-            } else if (medium.isSelected()) {
-                Data.getPartition().play("_E");
-                Data.getPartition_tmp().append("_E");
-            } else {
-                Data.getPartition().play("_E");
-                Data.getPartition_tmp().append("_E,");
-
-            }
-            System.out.println("Re# ");
-            this.appliqueRythme();
-            if(flag==2){
-                Data.getPartition_tmp().append("| ");
-            }
-            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-            Data.getInstance().notifierObservateur();
-        }
+        Note("Re_d");
     }
 
     @FXML
     protected void Mi() {
-        int flag=checkMesure();
-        if(flag==1 || flag==2) {
-            if (aigu.isSelected()) {
-                Data.getPartition().play("e");
-                Data.getPartition_tmp().append("e");
-
-            } else if (medium.isSelected()) {
-                Data.getPartition().play("E");
-                Data.getPartition_tmp().append("E");
-
-            } else {
-                Data.getPartition().play("E,");
-                Data.getPartition_tmp().append("E,");
-
-            }
-            System.out.println("Mi ");
-            this.appliqueRythme();
-            if(flag==2){
-                Data.getPartition_tmp().append("| ");
-            }
-            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-            Data.getInstance().notifierObservateur();
-        }
+        Note("Mi");
     }
 
     @FXML
     protected void Fa() {
-        int flag=checkMesure();
-        if(flag==1 || flag==2) {
-            if (aigu.isSelected()) {
-                Data.getPartition().play("f");
-                Data.getPartition_tmp().append("f");
-
-            } else if (medium.isSelected()) {
-                Data.getPartition().play("F");
-                Data.getPartition_tmp().append("F");
-
-            } else {
-                Data.getPartition().play("F,");
-                Data.getPartition_tmp().append("F,");
-
-            }
-            System.out.println("Fa ");
-            this.appliqueRythme();
-            if(flag==2){
-                Data.getPartition_tmp().append("| ");
-            }
-            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-            Data.getInstance().notifierObservateur();
-        }
+        Note("Fa");
     }
+
     @FXML
     protected void Fa_d() {
-        int flag=checkMesure();
-        if(flag==1 || flag==2) {
-            if (aigu.isSelected()) {
-                Data.getPartition().play("_g");
-                Data.getPartition_tmp().append("_g");
-
-            } else if (medium.isSelected()) {
-                Data.getPartition().play("_G");
-                Data.getPartition_tmp().append("_G");
-
-            } else {
-                Data.getPartition().play("_G,");
-                Data.getPartition_tmp().append("_G,");
-
-            }
-            System.out.println("Fa# ");
-            this.appliqueRythme();
-            if(flag==2){
-                Data.getPartition_tmp().append("| ");
-            }
-            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-            Data.getInstance().notifierObservateur();
-        }
+        Note("Fa_d");
     }
 
     @FXML
     protected void Sol() {
-        int flag=checkMesure();
-        if(flag==1 || flag==2) {
-            if (aigu.isSelected()) {
-                Data.getPartition().play("g");
-                Data.getPartition_tmp().append("g");
-
-            } else if (medium.isSelected()) {
-                Data.getPartition().play("G");
-                Data.getPartition_tmp().append("G");
-
-            } else {
-                Data.getPartition().play("G,");
-                Data.getPartition_tmp().append("G,");
-
-            }
-            System.out.println("Sol ");
-            this.appliqueRythme();
-            if(flag==2){
-                Data.getPartition_tmp().append("| ");
-            }
-            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-            Data.getInstance().notifierObservateur();
-        }
+        Note("Sol");
     }
 
     @FXML
     protected void Sol_d() {
-        int flag=checkMesure();
-        if(flag==1 || flag==2) {
-            if (aigu.isSelected()) {
-                Data.getPartition().play("_a");
-                Data.getPartition_tmp().append("_a");
-
-            } else if (medium.isSelected()) {
-                Data.getPartition().play("_A");
-                Data.getPartition_tmp().append("_A");
-
-            } else {
-                Data.getPartition().play("_A,");
-                Data.getPartition_tmp().append("_A,");
-
-            }
-            System.out.println("Sol# ");
-            this.appliqueRythme();
-            if(flag==2){
-                Data.getPartition_tmp().append("| ");
-            }
-            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-            Data.getInstance().notifierObservateur();
-        }
+        Note("Sol_d");
     }
     @FXML
     protected void La() {
-        int flag=checkMesure();
-        if(flag==1 || flag==2) {
-            if (aigu.isSelected()) {
-                Data.getPartition().play("a");
-                Data.getPartition_tmp().append("a");
-
-            } else if (medium.isSelected()) {
-                Data.getPartition().play("A");
-                Data.getPartition_tmp().append("A");
-
-            } else {
-                Data.getPartition().play("A,");
-                Data.getPartition_tmp().append("A,");
-
-            }
-            System.out.println("La ");
-            this.appliqueRythme();
-            if(flag==2){
-                Data.getPartition_tmp().append("| ");
-            }
-            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-            Data.getInstance().notifierObservateur();
-        }
+        Note("La");
     }
     @FXML
     protected void La_d() {
-        int flag=checkMesure();
-        if(flag==1 || flag==2) {
-            if (aigu.isSelected()) {
-                Data.getPartition().play("_b");
-                Data.getPartition_tmp().append("_b");
-
-            } else if (medium.isSelected()) {
-                Data.getPartition().play("_B");
-                Data.getPartition_tmp().append("_B");
-
-            } else {
-                Data.getPartition().play("_B,");
-                Data.getPartition_tmp().append("_B,");
-
-            }
-            System.out.println("La# ");
-            this.appliqueRythme();
-            if(flag==2){
-                Data.getPartition_tmp().append("| ");
-            }
-            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-            Data.getInstance().notifierObservateur();
-        }
+        Note("La_d");
     }
     @FXML
     protected void Si() {
-        int flag=checkMesure();
-        if(flag==1 || flag==2) {
-            if (aigu.isSelected()) {
-                Data.getPartition().play("b");
-                Data.getPartition_tmp().append("b");
-
-            } else if (medium.isSelected()) {
-                Data.getPartition().play("B");
-                Data.getPartition_tmp().append("B");
-
-            } else {
-                Data.getPartition().play("B,");
-                Data.getPartition_tmp().append("B,");
-
-            }
-            System.out.println("Si ");
-            this.appliqueRythme();
-            if(flag==2){
-                Data.getPartition_tmp().append("| ");
-            }
-            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-            Data.getInstance().notifierObservateur();
-        }
+        Note("Si");
     }
 
+    /**
+     * Indique à la Partition quel instrument est sélectionné et lance l'animation correspondante
+     */
     @FXML
     public void setInstrument(){
         if(piano.isSelected()){
@@ -471,8 +415,10 @@ public class BottomController implements Observateur {
         }
     }
 
+    /**
+     * Effectue l'animation correspondante à l'instrument sélectionné
+     */
     public void animationInstrument(String instrument){
-        TranslateTransition animation = new TranslateTransition();
         animation.setDuration(Duration.seconds(2));
 
         if(instrument.equals("Piano")){
@@ -565,6 +511,7 @@ public class BottomController implements Observateur {
     public void setTempo(Slider tempo) {
         Tempo = tempo;
     }
+
 
 
 }

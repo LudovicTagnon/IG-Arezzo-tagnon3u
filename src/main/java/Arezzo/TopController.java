@@ -13,6 +13,13 @@ import java.io.File;
 
 public class TopController implements Observateur{
 
+    /**
+     * @author Ludovic Tagnon
+     * Classe correspondant aux fonctionnalités:
+     * Du Menu (Nouveau, Ouvrir, Enregistrer sous, Quitter, Renommer et Transposer),
+     * Du Titre de la mélodie
+     */
+
     @FXML
     private Label Titre;
     @FXML
@@ -23,6 +30,7 @@ public class TopController implements Observateur{
     MenuItem Enregistrer_sous;
     @FXML
     MenuItem Quitter;
+
 
     @FXML
     public void initialize(){
@@ -35,12 +43,17 @@ public class TopController implements Observateur{
     public TopController() {
         Data.getInstance().ajouterObservateur(this);
     }
-
+    /**
+     * Appel à quiter le programme
+     */
     @FXML
     protected void Quitter() {
         Platform.exit();
     }
 
+    /**
+     * Permet de renommer le label du Titre de la musique jouée
+     */
     @FXML
     protected void Renommer(){
         TextInputDialog texte = new TextInputDialog("Renommer");
@@ -51,10 +64,17 @@ public class TopController implements Observateur{
         Data.getPartition().setTitre(texte.getResult());
     }
 
+    /**
+     * Ajoute à sauvegarder la musique
+     */
     @FXML
     protected void Sauvegarder(){
         Data.getInstance().Sauvegarder();
     }
+
+    /**
+     * Ouvre un fichier txt contenant la partition à modifier
+     */
 
     @FXML
     protected void Ouvrir(){
@@ -64,14 +84,20 @@ public class TopController implements Observateur{
 
     }
 
+    /**
+     * Réinitialise la partition
+     */
     @FXML
     protected void Nouveau(){
         Data.getPartition_tmp().delete(0,Data.getPartition_tmp().length());
         Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-
+        Data.getInstance().setCpt_mesure(0);
         Data.getInstance().notifierObservateur();
     }
 
+    /**
+     * Permet de transposer d'un demi-ton, toutes les notes de la partition
+     */
     @FXML
     protected void Transposer(){
 
