@@ -3,15 +3,34 @@ package Arezzo;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCombination;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
 
 public class TopController implements Observateur{
 
     @FXML
     private Label Titre;
+    @FXML
+    MenuItem Nouveau;
+    @FXML
+    MenuItem Ouvrir;
+    @FXML
+    MenuItem Enregistrer_sous;
+    @FXML
+    MenuItem Quitter;
+
+    @FXML
+    public void initialize(){
+        Nouveau.setAccelerator(KeyCombination.keyCombination("CTRL+N"));
+        Ouvrir.setAccelerator(KeyCombination.keyCombination("CTRL+O"));
+        Enregistrer_sous.setAccelerator(KeyCombination.keyCombination("CTRL+S"));
+        Quitter.setAccelerator(KeyCombination.keyCombination("CTRL+W"));
+    }
 
     public TopController() {
         Data.getInstance().ajouterObservateur(this);
@@ -39,7 +58,10 @@ public class TopController implements Observateur{
 
     @FXML
     protected void Ouvrir(){
-        Data.getInstance().Ouvrir();
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showOpenDialog(new Stage());
+        Data.getInstance().Ouvrir(file);
+
     }
 
     @FXML
@@ -61,13 +83,10 @@ public class TopController implements Observateur{
                 System.out.println("TEST");
                 Data.getPartition_tmp().replace(i+1,i+2, "");
                 Data.getPartition_tmp().replace(i,i+1,"C");
-                //i++;
             } else if(Data.getPartition_tmp().charAt(i)== 'B'){
                 Data.getPartition_tmp().replace(i,i+1,"c");
-                //i++;
             }else if(Data.getPartition_tmp().charAt(i)== 'b'){
                 Data.getPartition_tmp().replace(i,i+1,"c");
-                //i++;
             }else if(Data.getPartition_tmp().charAt(i)== 'C' || Data.getPartition_tmp().charAt(i)== 'c'){
                 Data.getPartition_tmp().insert(i,"^");
                 i++;
@@ -76,10 +95,8 @@ public class TopController implements Observateur{
                 i++;
             }else if(Data.getPartition_tmp().charAt(i)== 'E'){
                 Data.getPartition_tmp().replace(i,i+1,"F");
-                //i++;
             }else if(Data.getPartition_tmp().charAt(i)== 'e'){
                 Data.getPartition_tmp().replace(i,i+1,"f");
-                //i++;
             }else if(Data.getPartition_tmp().charAt(i)== 'F' || Data.getPartition_tmp().charAt(i)== 'f'){
                 Data.getPartition_tmp().insert(i,"^");
                 i++;

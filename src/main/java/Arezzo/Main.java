@@ -34,6 +34,9 @@ public class Main extends Application {
         stage.setTitle("Arezzo");
         stage.setScene(scene);
         stage.show();
+        stage.setOnCloseRequest(windowEvent -> {
+            Data.getPartition().close();
+        });
     }
 
     public static void main(String[] args) {

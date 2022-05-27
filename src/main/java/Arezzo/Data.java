@@ -7,6 +7,7 @@ import partition.Partition;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Synthesizer;
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -31,9 +32,9 @@ public class Data extends SujetObserve{
         }
     }
 
-    public void Ouvrir(){
+    public void Ouvrir(File file){
         try{
-            BufferedReader reader = new BufferedReader(new FileReader("save.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader(file));
             Gson gson = new Gson();
             this.Partition_tmp = gson.fromJson(reader.readLine(), StringBuilder.class);
             this.partition.setTitre(gson.fromJson(reader.readLine(), String.class));
@@ -41,7 +42,6 @@ public class Data extends SujetObserve{
             this.partition.setMelodie(Partition_tmp.toString());
             this.partition.setTempo((int) this.Tempo);
 
-            //BottomController.Tempo.setValue(Tempo);
             this.notifierObservateur();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -66,10 +66,10 @@ public class Data extends SujetObserve{
         }
     }
 
-
     public static Partition getPartition() {
         return instance.partition;
     }
+
 
     public static Data getInstance(){
         return instance;

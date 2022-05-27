@@ -15,10 +15,10 @@
         <menus>
           <Menu mnemonicParsing="false" text="Melodie">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#Nouveau" text="Nouveau" />
-                  <MenuItem mnemonicParsing="false" onAction="#Ouvrir" text="Ouvrir" />
-                  <MenuItem mnemonicParsing="false" onAction="#Sauvegarder" text="Enregistrer sous ..." />
-                  <MenuItem mnemonicParsing="false" onAction="#Quitter" text="Quitter" />
+              <MenuItem fx:id="Nouveau" mnemonicParsing="false" onAction="#Nouveau" text="Nouveau" />
+                  <MenuItem fx:id="Ouvrir" mnemonicParsing="false" onAction="#Ouvrir" text="Ouvrir" />
+                  <MenuItem fx:id="Enregistrer_sous" mnemonicParsing="false" onAction="#Sauvegarder" text="Enregistrer sous ..." />
+                  <MenuItem fx:id="Quitter" mnemonicParsing="false" onAction="#Quitter" text="Quitter" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Outils">
