@@ -472,7 +472,75 @@ public class BottomController implements Observateur {
     }
 
     public void animationInstrument(String instrument){
+        TranslateTransition animation = new TranslateTransition();
+        animation.setDuration(Duration.seconds(2));
 
+        if(instrument.equals("Piano")){
+            Piano.setOpacity(1);
+            Guitare.setOpacity(0);
+            Saxophone.setOpacity(0);
+            Trompette.setOpacity(0);
+            animation.setNode(Piano);
+
+            animation.setToY(-80);
+            animation.setCycleCount(1);
+            animation.setAutoReverse(true);
+            animation.playFrom(Duration.ZERO);
+
+            animation.setOnFinished(actionEvent -> {
+                Piano.setOpacity(0);
+                Piano.setLayoutY(80);
+                animation.setCycleCount(0);
+                animation.stop();
+            });
+
+        }else if(instrument.equals("Guitare")){
+            Guitare.setOpacity(1);
+            Piano.setOpacity(0);
+            Saxophone.setOpacity(0);
+            Trompette.setOpacity(0);
+            animation.setNode(Guitare);
+
+            animation.setToY(-80);
+            animation.playFromStart();
+
+            animation.setOnFinished(actionEvent -> {
+                Guitare.setOpacity(0);
+                Guitare.setLayoutY(80);
+                animation.stop();
+            });
+        }else if(instrument.equals("Saxophone")){
+            Saxophone.setOpacity(1);
+            Guitare.setOpacity(0);
+            Piano.setOpacity(0);
+            Trompette.setOpacity(0);
+            animation.setNode(Saxophone);
+
+            animation.setToY(-80);
+            animation.playFromStart();
+
+            animation.setOnFinished(actionEvent -> {
+                Saxophone.setOpacity(0);
+                Saxophone.setLayoutY(80);
+                animation.stop();
+            });
+        }else if(instrument.equals("Trompette")){
+            Trompette.setOpacity(1);
+            Guitare.setOpacity(0);
+            Saxophone.setOpacity(0);
+            Piano.setOpacity(0);
+            animation.setNode(Trompette);
+
+            animation.setToY(-80);
+            animation.playFromStart();
+
+
+            animation.setOnFinished(actionEvent -> {
+                Trompette.setOpacity(0);
+                Trompette.setLayoutY(80);
+                animation.stop();
+            });
+        }
     }
 
     @FXML
