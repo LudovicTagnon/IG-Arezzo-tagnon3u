@@ -61,7 +61,7 @@ public class TopController implements Observateur{
         texte.setContentText("Nouveau nom:");
         texte.showAndWait();
         this.Titre.setText(texte.getResult());
-        Data.getPartition().setTitre(texte.getResult());
+        //Data.getPartition().setTitre(texte.getResult());
     }
 
     /**

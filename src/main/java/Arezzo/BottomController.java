@@ -322,14 +322,13 @@ public class BottomController implements Observateur {
                     Data.getPartition_tmp().append("B,");
                 }
             }
+            this.appliqueRythme();
+            if(flag==2){
+                Data.getPartition_tmp().append("| ");
+            }
+            Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
+            Data.getInstance().notifierObservateur();
         }
-        this.appliqueRythme();
-        if(flag==2){
-            Data.getPartition_tmp().append("| ");
-        }
-        Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
-        Data.getInstance().notifierObservateur();
-
 
     }
 

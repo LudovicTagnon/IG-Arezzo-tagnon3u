@@ -59,6 +59,7 @@ public class Data extends SujetObserve{
             this.Partition_tmp = gson.fromJson(reader.readLine(), StringBuilder.class);
             this.partition.setTitre(gson.fromJson(reader.readLine(), String.class));
             this.Tempo = gson.fromJson(reader.readLine(), Double.class);
+            this.cpt_mesure = gson.fromJson(reader.readLine(), Integer.class);
             this.partition.setMelodie(Partition_tmp.toString());
             this.partition.setTempo((int) this.Tempo);
 
@@ -79,6 +80,8 @@ public class Data extends SujetObserve{
             writer.write(gson.toJson(this.partition.getTitre()));
             writer.newLine();
             writer.write(gson.toJson(this.Tempo));
+            writer.newLine();
+            writer.write(gson.toJson(this.cpt_mesure));
             writer.close();
         }
         catch (IOException e){

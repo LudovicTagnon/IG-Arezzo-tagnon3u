@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/home/ludovic/Bureau/Arezzo/src/main/java/Arezzo</OriginalElement>
+  <nodes>
+    <node x="829.5418429047054" y="7.561965240348911">Arezzo.BottomController</node>
+    <node x="-456.0732984293194" y="17.19012788081443">Arezzo.Data</node>
+    <node x="58.87052061071074" y="0.0">Arezzo.TopController</node>
+    <node x="-497.0732984293194" y="709.2608085090867">Arezzo.SujetObserve</node>
+    <node x="301.75871019684405" y="405.92284510007266">Arezzo.Observateur</node>
+    <node x="0.0" y="636.7608085090867">Arezzo.CentreController</node>
+    <node x="444.206181757708" y="22.707143587620635">Arezzo.Main</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Arezzo.CentreController" target="Arezzo.Observateur" relationship="REALIZATION">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Arezzo.Data" target="Arezzo.SujetObserve" relationship="GENERALIZATION">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Arezzo.BottomController" target="Arezzo.Observateur" relationship="REALIZATION">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Arezzo.TopController" target="Arezzo.Observateur" relationship="REALIZATION">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Balloons" zoom="0.5437722419928825" showDependencies="false" x="544.3979057591616" y="416.6492146596836" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
