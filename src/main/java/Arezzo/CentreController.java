@@ -263,7 +263,6 @@ public class CentreController implements Observateur {
                 Label label_tmp = new Label(String.valueOf(Data.getPartition_tmp().charAt(i)) + String.valueOf(Data.getPartition_tmp().charAt(i+1)));
                 label_tmp.setPrefSize(70,50);
                 label_tmp.setStyle(" -fx-font-size: 15pt ");
-                label_tmp.setPadding(new Insets(100));
                 if( i+2 < Data.getPartition_tmp().length()){
                     if(Data.getPartition_tmp().charAt(i+2) == ','){
                         label_tmp.setText(label_tmp.getText() + Data.getPartition_tmp().charAt(i+2));
