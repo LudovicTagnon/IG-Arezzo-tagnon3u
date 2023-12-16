@@ -42,7 +42,6 @@ public class CentreController implements Observateur {
         Effacer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println(ListeNotes.getSelectionModel().getSelectedIndex());
                 deleteAtIndex(ListeNotes.getSelectionModel().getSelectedIndex());
             }
         });
@@ -103,8 +102,6 @@ public class CentreController implements Observateur {
             }
         }
 
-        System.out.println(index1stCharNoteBefore);
-        System.out.println(indexLastCharNoteBefore);
 
         ArrayList<Integer> interval = new ArrayList<>();
         interval.add(index1stCharNoteBefore);
@@ -121,7 +118,6 @@ public class CentreController implements Observateur {
         ArrayList<Integer> testFlag = intervalNote(indexToMove);
         if(testFlag.get(1)+2>Data.getPartition_tmp().length()){
             flagDerNote=true;
-            System.out.println("Impossible de monter la derniere note");
         }
 
         if(!flagDerNote)
@@ -134,8 +130,6 @@ public class CentreController implements Observateur {
             Data.getPartition_tmp().replace(notePrincipaleInterval.get(0), notePrincipaleInterval.get(1), noteSecondaire);
             Data.getPartition_tmp().replace(noteSecondaireInterval.get(0), noteSecondaireInterval.get(1), notePrincipale);
 
-
-            System.out.println(Data.getPartition_tmp());
             Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
             Data.getInstance().notifierObservateur();
         }
@@ -150,7 +144,6 @@ public class CentreController implements Observateur {
         ArrayList<Integer> testFlag = intervalNote(indexToMove);
         if(testFlag.get(0)<=0){
             flag1ereNote=true;
-            System.out.println("Impossible de descendre la premiere note");
         }
 
         if(!flag1ereNote)
@@ -164,7 +157,6 @@ public class CentreController implements Observateur {
             Data.getPartition_tmp().replace(noteSecondaireInterval.get(0), noteSecondaireInterval.get(1), notePrincipale);
 
 
-            System.out.println(Data.getPartition_tmp());
             Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
             Data.getInstance().notifierObservateur();
         }
@@ -195,7 +187,6 @@ public class CentreController implements Observateur {
             Data.getPartition_tmp().replace(index1stCharToDel,indexLastCharToDel-1, "z1");
         }
 
-        System.out.println(Data.getPartition_tmp());
         Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
         Data.getInstance().notifierObservateur();
 
@@ -205,7 +196,7 @@ public class CentreController implements Observateur {
     protected void afficherNotes() {
         ListeNotes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         listviewPane = new AnchorPane(ListeNotes);
-        stage.setScene(new Scene(listviewPane, 300,800));
+        stage.setScene(new Scene(listviewPane, ListeNotes.getWidth(),ListeNotes.getHeight()));
         stage.show();
     }
 
@@ -214,7 +205,6 @@ public class CentreController implements Observateur {
         this.Image_Partition.setImage(Data.getPartition().getImage());
         this.ListeNotes.getItems().clear();
         rafraichirNotesListView();
-        System.out.println(Data.getPartition_tmp());
     }
 
     /**

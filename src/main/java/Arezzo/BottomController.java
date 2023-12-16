@@ -134,7 +134,6 @@ public class BottomController implements Observateur {
      */
     @FXML
     protected void play(){
-        System.out.println("Play");
         Data.getPartition().play();
     }
 
@@ -397,19 +396,15 @@ public class BottomController implements Observateur {
     public void setInstrument(){
         if(piano.isSelected()){
             Data.getPartition().setInstrument("Piano");
-            System.out.println("Piano");
             animationInstrument("Piano");
         }else if(guitare.isSelected()){
             Data.getPartition().setInstrument("Guitare");
-            System.out.println("Guitare");
             animationInstrument("Guitare");
         }else if(saxophone.isSelected()){
             Data.getPartition().setInstrument("Saxophone");
-            System.out.println("Saxophone");
             animationInstrument("Saxophone");
         }else if(trompette.isSelected()){
             Data.getPartition().setInstrument("Trompette");
-            System.out.println("Trompette");
             animationInstrument("Trompette");
         }
     }
@@ -490,16 +485,13 @@ public class BottomController implements Observateur {
 
     @FXML
     public void setVolume(){
-        System.out.println("Set volume : " + Volume.getValue() );
         Data.getPartition().setVolume(Volume.getValue());
-        System.out.println(Volume.getValue());
     }
 
     @FXML
     public void setTempo(){
         Data.getPartition().setTempo((int) Tempo.getValue());
         Data.getInstance().setTempo(Tempo.getValue());
-        System.out.println((int) Tempo.getValue());
     }
 
     @Override

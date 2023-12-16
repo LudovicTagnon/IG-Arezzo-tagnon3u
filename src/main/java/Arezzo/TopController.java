@@ -106,7 +106,6 @@ public class TopController implements Observateur{
                 Data.getPartition_tmp().insert(i,"^");
                 i++;
             }else if(Data.getPartition_tmp().charAt(i)== 'B' && Data.getPartition_tmp().charAt(i+1)== ','){
-                System.out.println("TEST");
                 Data.getPartition_tmp().replace(i+1,i+2, "");
                 Data.getPartition_tmp().replace(i,i+1,"C");
             } else if(Data.getPartition_tmp().charAt(i)== 'B'){
@@ -175,7 +174,6 @@ public class TopController implements Observateur{
         }
         Data.getPartition().setMelodie(Data.getPartition_tmp().toString());
         Data.getInstance().notifierObservateur();
-        System.out.println(Data.getPartition_tmp().toString());
     }
 
     @Override
